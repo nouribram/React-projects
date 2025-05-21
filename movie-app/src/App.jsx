@@ -7,15 +7,25 @@ import './App.css'
 const hasLiked = true;
 
 
-const Card = ({title}) => {
+const Card = ({ title }) => {
+
+    const [hasLiked, setHasLiked] = useState(false);
+
   return (
-    <div className='card'>
+    <div className="card">
       <h2>{title}</h2>
+
+      <button onClick={() => setHasLiked(true)}>
+        {hasLiked ? 'Liked' : 'Like'}
+      </button>
     </div>
   )
 }
 
 const App = () => {
+
+
+
   return(
 
     <div className='card-container'>
