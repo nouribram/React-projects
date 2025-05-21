@@ -3,7 +3,11 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-const Card = ( {title}) => {
+
+const hasLiked = true;
+
+
+const Card = ({title}) => {
   return (
     <div className='card'>
       <h2>{title}</h2>
@@ -16,7 +20,7 @@ const App = () => {
 
     <div className='card-container'>
 
-      <Card title="Star Wars" rating={5} isCool={true}/>
+      <Card title="Star Wars" rating={5} isCool={true} hasLiked={hasLiked}/>
       <Card title="Avatar"/>
       <Card title="Lion King"/>
 
