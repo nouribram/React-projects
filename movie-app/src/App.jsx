@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import Search from './components/Search'
+import Spinner from './components/Spinner';
+import MovieCard from './components/MovieCard';
 
 
 //const API_BASE_URL = '';
@@ -55,7 +57,7 @@ const App = () => {
  
   } finally {
 
-    setIsLoading(false);
+    setIsLoading(true);
 
   }
 
@@ -80,8 +82,21 @@ const App = () => {
             </header>
              
              <section className='all-movies'>
-                 <h2>All movies</h2>
-                 {errorMessage && }
+                 <h2 className="mt-[20px]">All movies</h2>
+
+                 {isLoading ? (
+                  <Spinner />
+                 ) : errorMessage ? (
+                  <p className="text-red-500">{errorMessage}</p>
+                 ) : (
+                  <ul>
+                    {moviesList.map((movie) => (
+                     <MovieCard key={movie.id} movie={movie}/>
+                       
+                    ))}
+                  </ul>
+                 )}
+
              </section>
            
           </div>
