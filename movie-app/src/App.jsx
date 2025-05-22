@@ -2,10 +2,17 @@ import React from 'react'
 
 export default function App() {
   return (
-    <div>
-       <h1 class="text-3xl font-bold underline">
-        
-       </h1>
-    </div>
+    <main>
+       <div className='pattern'>
+          <div className='wrapper'>
+            <header>
+              <img src="./images/assets/hero-bg.png" alt="Hero Banner"/>
+               <h1>Find <span className="text-gradient">Movies</span> youll enjoy without the hassle</h1>
+            </header>
+
+            <p>Search</p>
+          </div>
+       </div>
+    </main>
   )
 }
