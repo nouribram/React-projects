@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import Search from './components/Search'
 
 
-const API_BASE_URL = '';
+//const API_BASE_URL = '';
 
-const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+//const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 const API_OPTIONS = {
   method: 'GET',
@@ -18,6 +18,25 @@ const App = () => {
  
   const [searchTerm, setSearchTerm] = useState('Nourhan');
 
+ const [errorMessage, setErrorMessagee] = useState('');
+ 
+  const fetchMovies = async () => {
+  try {
+      
+     const endpoint = `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
+
+     const response = await fetch(endpoint, API_OPTIONS);
+     
+  } catch(error){
+
+    console.error(`Error fetching movies ${error}`);
+    setErrorMessagee('Error fetching movies');
+
+
+  }
+ }
+ 
+ 
   useEffect(() => {
    
   }, []);
@@ -32,11 +51,14 @@ const App = () => {
             <header>
               <img src="./hero-bg.jpg" alt="Hero Banner"/>
                <h1>Find <span className="text-gradient">Movies</span> youll enjoy without the hassle</h1>
+               <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
             </header>
-
-           <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+             
+             <section className='all-movies'>
+                 <h2>All movies</h2>
+                 {errorMessage && }
+             </section>
            
-           <h1 className="text-white">{searchTerm}</h1>
           </div>
        
     </main>
