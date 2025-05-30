@@ -15,9 +15,9 @@ function App() {
   return (
    
     <>
-      <Header />
-      <Tabs />
-      <TodoList />
+      <Header todos={todos}/>
+      <Tabs todos={todos}/>
+      <TodoList todos={todos}/>
       <TodoInput />
 
     </>

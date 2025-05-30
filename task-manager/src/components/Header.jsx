@@ -1,7 +1,14 @@
-export function Header() {
+export function Header(props) {
+
+    const { todos } = props
+    const todosLength = todos.length
+    const isTaskPlural = todos.length != 1
+    
+    const taskOrTasks = isTaskPlural ? 'tasks' : 'task'
     return(
         <header>
-            <h1 className="text-gradient">you have 3 open tasks </h1>
+            <h1 className="text-gradient">you have {todosLength}
+                open tasks {taskOrTasks}</h1>
         </header>
     )
 }
