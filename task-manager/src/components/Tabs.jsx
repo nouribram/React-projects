@@ -9,7 +9,7 @@ export function Tabs(props) {
                tab === 'Open' ?
                 todos.filter(val => !val.complete).
                 length : 
-                todos.filter(val => val.complete).length;
+                todos.filter(val => val.complete).length
                return (
                     <button key={tabIndex} className="tab-button">
                         <h4>{tab} <span>{numOfTasks}</span></h4>
