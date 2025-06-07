@@ -16,9 +16,11 @@ function App() {
     ]*/
 
     const [todos, setTodos] = useState([ 
-      { input: 'Hello! add your first Todo', complete: true},
+      { input: 'Hello! add your first Todo', complete: true}
     
     ])
+
+    const {selectedTab, setSelectedTab}  = useState('Open')
 
     function handleAddTodo(newTodo) {
       const newTodoList = [...todos, {input: newTodo, complete: 
@@ -39,7 +41,7 @@ function App() {
    
     <>
       <Header todos={todos}/>
-      <Tabs todos={todos}/>
+      <Tabs selectedTab={selectedTab} setSelectedTab={setSelectedTab} todos={todos}/>
       <TodoList todos={todos}/>
       <TodoInput handleAddTodo={handleAddTodo}/>
 
