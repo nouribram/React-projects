@@ -8,7 +8,7 @@ export function Header(props) {
     return(
         <header>
             <h1 className="text-gradient">you have {todosLength}
-                open tasks {taskOrTasks}</h1>
+                open task {taskOrTasks}</h1>
         </header>
     )
 }
