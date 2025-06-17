@@ -1,15 +1,17 @@
+import { useState } from "react"
 import { Header } from "./components/Header"
 import { SideNav } from "./components/SideNav"
 import { PokeCard  } from "./components/SideNav"
 
 function App() {
   
-
-  return (
+   const {selectedPokemon, setSelectedPokemon } = useState(0)
+  
+   return (
     <>
        <Header/>
-       <SideNav/>
-       <PokeCard/>
+       <SideNav selectedPokemon={selectedPokemon} setSelectedPokemon={selectedPokemon}/>
+       <PokeCard selectedPokemon={selectedPokemon}/>
     </>
   )
 }
