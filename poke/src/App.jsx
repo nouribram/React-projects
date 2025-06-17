@@ -1,9 +1,9 @@
-import { useState } from 'react'
-import './App.css'
+import { Header } from "./components/Header"
+import { SideNav } from "./components/SideNav"
+import { PokeCard  } from "./components/SideNav"
 
 function App() {
   
-  const [count, setCount] = useState(0)
 
   return (
     <>
