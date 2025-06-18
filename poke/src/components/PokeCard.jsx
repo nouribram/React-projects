@@ -9,7 +9,39 @@ export function PokeCard(props) {
     useEffect(() => {
        
         if (loading || !localStorage) { return }
-    }, [selectedPokemon])
+        let cache = {} 
+        if (localStorage.getItem('pokedex')) {
+            cache = Json.parse(localStorage.getItem('pokemon'))
+        }
+
+        if (selectedPokemon in cache) {
+               setData(cache[selectedPokemon])
+               return
+        } 
+        async function fetchPokemonData() {
+            setLoading(true)
+            try {
+               const baseUrl = 'https://pokeapi.co/api/v2/'
+               const suffix = 'pokemon/' + selectedPokemon
+               const finalUrl = baseUrl + suffix
+               const res = await fetch(finalUrl)
+               const pokemonData = await res.json()
+               setData(pokemonData)
+
+
+              cashe[selectedPokemon] = PokemonData 
+              localStorage.setItem(JSON.stringify(cashe))
+
+            } catch (err) {
+                console.log(err.message)
+            } finally {
+                setLoading(false)
+            }
+        }
+          
+        fetchPokemonData()
+
+    }, [loading, selectedPokemon])
     
     return (
         <div></div>
