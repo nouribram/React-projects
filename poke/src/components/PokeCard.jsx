@@ -8,7 +8,7 @@ export function PokeCard(props) {
 
     useEffect(() => {
        
-        if (loading) { return }
+        if (loading || !localStorage) { return }
     }, [selectedPokemon])
     
     return (
