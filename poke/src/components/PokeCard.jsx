@@ -30,7 +30,7 @@ export function PokeCard(props) {
 
 
               cashe[selectedPokemon] = PokemonData 
-              localStorage.setItem(JSON.stringify(cashe))
+              localStorage.setItem('pokemon',JSON.stringify(cashe))
 
             } catch (err) {
                 console.log(err.message)
