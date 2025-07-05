@@ -8,6 +8,8 @@ export function PokeCard(props) {
     const {name, height, abilities, stats, types, moves, sprites } = 
     data || {}
 
+/****************** */ 
+
     useEffect(() => {
        
         if (loading || !localStorage) { return }
