@@ -1,11 +1,29 @@
 import './App.css'
+import Layout from './components/Layout';
+
+
 
 function App() {
 
-  return (
+  const isAuthenticated = false
+ 
+  const authenticatedContent = (
+
     <>
-  
+        <Stats/>
+        <History/>
     </>
+
+  )
+
+  return (
+
+   <Layout>
+    <Hero/>
+    <CoffeForm/>
+    {isAuthenticated &&  (authenticatedContent)}
+   </Layout>
+
   )
 }
 
