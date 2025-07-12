@@ -19,8 +19,8 @@ export default function Layout(props) {
         <footer>
             <p>
                 <span className="text-gradient">Caffiend</span>
-                was made by <a href="#">Nour</a> using the
-                <a href="#">FantaCss</a>
+                was made by <a href="#" target="_blank">Nour</a> using the
+                <a href="#" target="_blank">FantaCss</a>
             </p>
         </footer>
     )

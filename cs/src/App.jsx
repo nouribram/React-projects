@@ -1,30 +1,27 @@
-import './index.css'
+import './index.css';
 import Layout from './components/Layout';
-
-
+import Hero from './components/Hero';
+import CoffeForm from './components/CoffeForm';
+import Stats from './components/Stats';
+import History from './components/History';
 
 function App() {
+  const isAuthenticated = false;
 
-  const isAuthenticated = false
- 
   const authenticatedContent = (
-
     <>
-        <Stats/>
-        <History/>
+      <Stats />
+      <History />
     </>
-
-  )
+  );
 
   return (
-
-   <Layout>
-    <Hero/>
-    <CoffeForm/>
-    {isAuthenticated &&  (authenticatedContent)}
-   </Layout>
-
-  )
+    <Layout>
+      <Hero />
+      <CoffeForm />
+      {isAuthenticated && authenticatedContent}
+    </Layout>
+  );
 }
 
-export default App
+export default App;
