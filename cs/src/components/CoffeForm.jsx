@@ -24,6 +24,18 @@ export default function CoffeForm() {
                 <h4>other</h4>
                 <p>n/a</p>
             </button>
+            <select id="coffe-list" name="coffe-list">
+                <option value={null}>
+                    select type
+                </option>
+                {coffeOptions.map((option, optionIndex) => {
+                    return(
+                        <option value={option.name} key={optionIndex}>
+                            {option.name} ({option.caffeine} mg)
+                        </option>
+                    )
+                })}
+            </select>
          </div>
              
         </>
