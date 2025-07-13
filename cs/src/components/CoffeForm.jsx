@@ -1,9 +1,6 @@
 import { coffeOptions } from "../utils"
 
 
-
-
-
 export default function CoffeForm() {
 
     return(
