@@ -36,6 +36,21 @@ export default function CoffeForm() {
                     )
                 })}
             </select>
+            <h4>add the cost ($)</h4>
+            <input className="w-full" type="number" placeholder="4.50"/>
+            <h4>Time since consumption</h4>
+            <div className="time-entry">
+                <div>
+                    <h6>Hours</h6>
+                    <select id="hours-select">
+                        {[0,1,2,3,4,5,6,7,8,9,1,11,12,13,14,15,16,17,18,19,20,21,22,23].map((hour, hourIndex) => {
+                        return(
+                            <option key={hourIndex} value={hour}>{hour}</option>
+                        )
+                        })}
+                    </select>
+                </div>
+            </div>
          </div>
              
         </>
