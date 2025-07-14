@@ -1,14 +1,18 @@
 import { coffeOptions } from "../utils"
-
+import { useState } from "react"
 
 export default function CoffeForm() {
+    
+    const [coffeSelection, setCoffeSelection] = useState(null)
+    const [showCoffeTypes, setShowCoffeTypes] = useState(false)
+
 
     return(
         <>
 
          <div className="section-header">
             <i className="fa-solid fa-pencil"/>
-            <h2>Start Tracking today</h2>
+            <h2>Start Tracking toda</h2>
          </div>
          <h4>Select Coffet Type</h4>
          <div className="coffe-grid">
@@ -20,7 +24,9 @@ export default function CoffeForm() {
                     </button>
                 )
             })}
-            <button className="button-card">
+            <button onClick={() => {
+                setShowCoffeTypes(true)
+            }}className="button-card">
                 <h4>other</h4>
                 <p>n/a</p>
             </button>
@@ -50,7 +56,21 @@ export default function CoffeForm() {
                         })}
                     </select>
                 </div>
+
+                  <div>
+                    <h6>Mins</h6>
+                    <select id="mins-select">
+                        {[0, 5, 10, 15, 30, 45].map((min, minIndex) => {
+                        return(
+                            <option key={minIndex} value={min}>{min}</option>
+                        )
+                        })}
+                    </select>
+                </div>
             </div>
+            <button>
+                <p>Add Entry</p>
+            </button>
          </div>
              
         </>
