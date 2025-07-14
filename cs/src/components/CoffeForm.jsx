@@ -30,11 +30,13 @@ export default function CoffeForm() {
             })}
             <button onClick={() => {
                 setShowCoffeTypes(true)
+                setSelectedCoffe(null)
             }}className={"button-card" + (showCoffeTypes ? ' coffe-button-selected' : ' ')}>
                 <h4>other</h4>
                 <p>n/a</p>
             </button>
-           {( <select id="coffe-list" name="coffe-list">
+           {showCoffeTypes && (
+             <select id="coffe-list" name="coffe-list">
                 <option value={null}>
                     select type
                 </option>
