@@ -3,7 +3,7 @@ import { useState } from "react"
 
 export default function CoffeForm() {
     
-    const [coffeSelection, setCoffeSelection] = useState(null)
+    const [selectedCoffe, setSelectedCoffe] = useState(null)
     const [showCoffeTypes, setShowCoffeTypes] = useState(false)
 
 
@@ -18,7 +18,11 @@ export default function CoffeForm() {
          <div className="coffe-grid">
             {coffeOptions.slice(0, 5).map((option, optionIndex) => {
                 return (
-                    <button className="button-card" key={optionIndex}>
+                    <button onClick={() => {
+                       setSelectedCoffe(option.name)
+                       setShowCoffeTypes(false)
+                    }} 
+                    className={"button-card" + (option.name === selectedCoffe ? ' coffe-button-selected' : ' ')} key={optionIndex}>
                        <h4>{option.name}</h4>
                        <p>{option.caffeine}mg</p>
                     </button>
@@ -26,11 +30,11 @@ export default function CoffeForm() {
             })}
             <button onClick={() => {
                 setShowCoffeTypes(true)
-            }}className="button-card">
+            }}className={"button-card" + (showCoffeTypes ? ' coffe-button-selected' : ' ')}>
                 <h4>other</h4>
                 <p>n/a</p>
             </button>
-            <select id="coffe-list" name="coffe-list">
+           {( <select id="coffe-list" name="coffe-list">
                 <option value={null}>
                     select type
                 </option>
@@ -41,7 +45,7 @@ export default function CoffeForm() {
                         </option>
                     )
                 })}
-            </select>
+            </select> )}
             <h4>add the cost ($)</h4>
             <input className="w-full" type="number" placeholder="4.50"/>
             <h4>Time since consumption</h4>
