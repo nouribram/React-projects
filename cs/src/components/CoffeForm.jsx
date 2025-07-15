@@ -37,7 +37,7 @@ export default function CoffeForm() {
             </button>
            {showCoffeTypes && (
              <select onChange={(e) => {
-                
+                setSelectedCoffe(e.target.value)
              }} id="coffe-list" name="coffe-list">
                 <option value={null}>
                     select type
