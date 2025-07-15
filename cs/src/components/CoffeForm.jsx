@@ -5,8 +5,9 @@ export default function CoffeForm() {
     
     const [selectedCoffe, setSelectedCoffe] = useState(null)
     const [showCoffeTypes, setShowCoffeTypes] = useState(false)
-
-
+    const [coffeCost, setCoffeCost] = useState(0)
+    const [hour, setHour] = useState(0)
+    const [min, setMin]  = useState(0)
     return(
         <>
 
@@ -51,7 +52,10 @@ export default function CoffeForm() {
                 })}
             </select> )}
             <h4>add the cost ($)</h4>
-            <input className="w-full" type="number" placeholder="4.50"/>
+            <input className="w-full" type="number" value={coffeCost} onChange=
+            {(e) => {
+             setCoffeCost.e.target.value
+            }} placeholder="4.50"/>
             <h4>Time since consumption</h4>
             <div className="time-entry">
                 <div>
