@@ -8,8 +8,11 @@ export default function CoffeForm() {
     const [coffeCost, setCoffeCost] = useState(0)
     const [hour, setHour] = useState(0)
     const [min, setMin]  = useState(0)
- 
- 
+  
+    function handleSubmitForm() {
+       console.log(selectedCoffe, coffeCost, hour, min) 
+    }
+  
     return(
         <>
 
@@ -76,7 +79,7 @@ export default function CoffeForm() {
                   <div>
                     <h6>Mins</h6>
                     <select onChange={(e) =>{
-                        setHour(e.target.value)
+                        setMin(e.target.value)
                     }} id="mins-select">
                         {[0, 5, 10, 15, 30, 45].map((min, minIndex) => {
                         return(
@@ -86,7 +89,7 @@ export default function CoffeForm() {
                     </select>
                 </div>
             </div>
-            <button>
+            <button onClick={handleSubmitForm}>
                 <p>Add Entry</p>
             </button>
          </div>
