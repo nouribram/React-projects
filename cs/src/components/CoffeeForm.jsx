@@ -3,8 +3,9 @@ import { useState } from 'react'
 import Modal from "./Modal"
 import Authentication from "./Authentication"
 import { useAuth } from "../context/AuthContext"
-import { doc, setDoc } from "firebase/firestore"
-import { db } from "../../firebase"
+/*
+import { doc, setDoc } from "firebase/firestore" 
+import { db } from "../../firebase"*/
 
 export default function CoffeeForm(props) {
     const { isAuthenticated } = props

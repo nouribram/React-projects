@@ -65,7 +65,7 @@ export const coffeeConsumptionHistory = {
     "1727635847332": { "name": "Black Coffee (8oz)", "cost": 6.11 }
 }
 
-export const coffeOptions = [
+export const coffeeOptions = [
     { "name": "Espresso", "caffeine": 63 },
     { "name": "Double Espresso", "caffeine": 126 },
     { "name": "Americano", "caffeine": 96 },
