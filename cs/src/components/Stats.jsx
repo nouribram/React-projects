@@ -1,9 +1,10 @@
-import { calculateCurrentCaffeineLevel, coffeConsumptionHistory, statusLevels } from "../utils"
+import { useAuth } from "../context/AuthContext"
+import { calculateCoffeeStats, calculateCurrentCaffeineLevel, coffeeConsumptionHistory, getTopThreeCoffees, statusLevels } from "../utils"
 
-function statCard(props) {
+function StatCard(props) {
     const { lg, title, children } = props
     return (
-        <div className={'card stat-card' + (lg ? 'col-span-2' : '')}>
+        <div className={'card stat-card  ' + (lg ? ' col-span-2' : '')}>
             <h4>{title}</h4>
             {children}
         </div>
@@ -11,67 +12,64 @@ function statCard(props) {
 }
 
 export default function Stats() {
-    const stats = {
-        daily_caffeine: 240,
-        daily_cost: 6.8, 
-        average_coffes: 2.3,
-        total_cost: 220,
-    }
+    const { globalData } = useAuth()
+    const stats = calculateCoffeeStats(globalData)
+    console.log(stats)
 
-    const caffeineLevel =  calculateCurrentCaffeineLevel(coffeConsumptionHistory)
+    const caffeineLevel = calculateCurrentCaffeineLevel(globalData)
     const warningLevel = caffeineLevel < statusLevels['low'].maxLevel ?
-    'low' : 
-    caffeineLevel < statusLevels['moderate'].maxLevel ?
-    'moderate' : 
-    'high'
-    return(
+        'low' :
+        caffeineLevel < statusLevels['moderate'].maxLevel ?
+            'moderate' :
+            'high'
+
+    return (
         <>
-             <div className="section-header">
-                <i className="fa-solid fa-chart-simple"/>
+            <div className="section-header">
+                <i className="fa-solid fa-chart-simple" />
                 <h2>Stats</h2>
-             </div>
-             <div className="stats-grid">
-                <statCard lg title="Active Caffeine Level">
+            </div>
+            <div className="stats-grid">
+                <StatCard lg title="Active Caffeine Level">
                     <div className="status">
                         <p><span className="stat-text">{caffeineLevel}</span>mg</p>
-                        <h5 style={{color: statusLevels['warningLevel'].color, background: statusLevels['warningLevel'].background}}>Low </h5> 
+                        <h5 style={{ color: statusLevels[warningLevel].color, background: statusLevels[warningLevel].background }}>{warningLevel}</h5>
                     </div>
-                    <p>{statusLevels['warningLevel'].description}</p>
-                </statCard>
-                <statCard title="Daily Caffeine">
+                    <p>{statusLevels[warningLevel].description}</p>
+                </StatCard>
+                <StatCard title="Daily Caffeine">
                     <p><span className="stat-text">{stats.daily_caffeine}</span>mg</p>
-                </statCard>
-                <statCard title="Avg number">
-                    <p><span className="stat-text">{stats.average_caffeine}</span>mg</p>
-                </statCard>
-                <statCard title="Daily Cost ($)">
-                    <p>$<span className="stat-text">{stats.daily_cost}</span></p>
-                </statCard>
-                <statCard title="Total Cost ($)">
-                    <p>$<span className="stat-text">{stats.total_cost}</span></p>
-                </statCard>
-                 <table className="stat-table">
+                </StatCard>
+                <StatCard title="Avg # of Coffees">
+                    <p><span className="stat-text">{stats.average_coffees}</span></p>
+                </StatCard>
+                <StatCard title="Daily Cost ($)">
+                    <p>$ <span className="stat-text">{stats.daily_cost}</span></p>
+                </StatCard>
+                <StatCard title="Total Cost ($)">
+                    <p>$ <span className="stat-text">{stats.total_cost}</span></p>
+                </StatCard>
+                <table className="stat-table">
                     <thead>
                         <tr>
-                            <th>Coffe Name</th>
-                            <th>Number of purchase</th>
-                            <th>percentage of total</th>
+                            <th>Coffee Name</th>
+                            <th>Number of Purchase</th>
+                            <th>Percentage of Total</th>
                         </tr>
                     </thead>
                     <tbody>
-                       {getTopThreeCoffes(coffeConsumptionHistory).map
-                       ((coffe, coffeIndex) => {
-                        return (
-                            <tr key={coffeIndex}>
-                                <td>{coffe.coffeName}</td>
-                                <td>{coffe.count}</td>
-                                <td>{coffe.percentage}</td>
-                            </tr>
-                        )
-                       })} 
+                        {getTopThreeCoffees(globalData).map((coffee, coffeeIndex) => {
+                            return (
+                                <tr key={coffeeIndex}>
+                                    <td>{coffee.coffeeName}</td>
+                                    <td>{coffee.count}</td>
+                                    <td>{coffee.percentage}</td>
+                                </tr>
+                            )
+                        })}
                     </tbody>
-                 </table>
-             </div>
+                </table>
+            </div>
         </>
     )
 }
