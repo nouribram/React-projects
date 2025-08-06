@@ -77,7 +77,7 @@ export default function CoffeeForm(props) {
             )}
             <div className="section-header">
                 <i className="fa-solid fa-pencil" />
-                <h2>Start Tracking Today</h2>
+                <h2>Start Tracking </h2>
             </div>
             <h4>Select coffee type</h4>
             <div className="coffee-grid">
@@ -104,7 +104,7 @@ export default function CoffeeForm(props) {
                 <select onChange={(e) => {
                     setSelectedCoffee(e.target.value)
                 }} id="coffee-list" name="coffee-list">
-                    <option value={null}>Select type</option>
+                    <option value={null}>Select the type</option>
                     {coffeeOptions.map((option, optionIndex) => {
                         return (
                             <option value={option.name} key={optionIndex}>
